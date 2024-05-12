@@ -1,0 +1,58 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type TarefasAvgAggregate {
+  id: Float
+}
+
+type TarefasCountAggregate {
+  id: Int!
+  nome: Int!
+  estado: Int!
+  criado: Int!
+  editado: Int!
+  _all: Int!
+}
+
+type TarefasMaxAggregate {
+  id: Int
+  nome: String
+  estado: Estato
+  criado: DateTime
+  editado: DateTime
+}
+
+enum Estato {
+  CONCLUIDO
+  NAO_CONCLUIDO
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type TarefasMinAggregate {
+  id: Int
+  nome: String
+  estado: Estato
+  criado: DateTime
+  editado: DateTime
+}
+
+type TarefasSumAggregate {
+  id: Int
+}
+
+type Tarefas {
+  id: ID!
+  nome: String!
+  estado: Estato!
+  criado: DateTime!
+  editado: DateTime!
+}
+
+type Query {
+  pegar: [Tarefas!]!
+}

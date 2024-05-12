@@ -1,0 +1,33 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nestgraphql {
+  provider         = "node node_modules/prisma-nestjs-graphql"
+  output           = "../src/@generated"
+  reExport         = Single
+  emitSingle       = true
+  purgeOutput      = true
+  relayStyle       = true
+  noInputs         = true
+  genericTypesPath = "../common/generic.types"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Estato {
+  CONCLUIDO
+  NAO_CONCLUIDO
+}
+
+model Tarefas {
+  id      Int @id @default(autoincrement())
+  nome    String
+  estado  Estato @default(NAO_CONCLUIDO)
+  criado  DateTime @default(now())
+  editado DateTime @updatedAt
+}
